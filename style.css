@@ -95,3 +95,34 @@ button.served:hover {
 	background-color: hsl(8, 85%, 50%);
 	color: white;
 }
+ 
+
+.outer-modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	transform: translate(40%, 0%);
+    min-width: 60%;
+	min-height: 100%; 
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+ 
+  /* Modal Content */
+  .modal-content {
+	position: relative;
+	top: 9rem;
+	background-color: lightblue;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 50%;
+  }
+  
+.hidden {
+	display: none;
+}
