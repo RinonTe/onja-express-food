@@ -68,11 +68,12 @@ window.addEventListener('submit', (event) => {
      const name = document.getElementById('name');
     const selectedDish = document.getElementById('select-form');
     const pieceNumbers = document.getElementById('quantity');
+    const amount = document.querySelector('[name="size"]');
     //const selectedDish = card.dataset.dish;
     event.preventDefault();
     if (event.target.matches('form')) {
         const newOrderHtml = `
-        <div class="order" data-dish="${selectedDish.value}" data-size="large" data-amount="${pieceNumbers.value}">
+        <div class="order" data-dish="${selectedDish.value}" data-size="${amount.value}" data-amount="${pieceNumbers.value}">
                     <span class="title">
                         ${name.value}
                     </span>
@@ -96,18 +97,18 @@ window.addEventListener('submit', (event) => {
  
 const handleOrderButtonClick = (event) => {
     if (event.target.matches('button.details')) {
-        const button = event.currentTarget;
+        const newName = document.querySelector('.title').textContent;
+        const button = event.target;
         const form = button.closest('.order');
-        const newName =  form.name.value;
         const dishName = form.dataset.dish;
         const size = form.dataset.size;
         const amount = form.dataset.amount;
         
     
         modalContent.innerHTML = `
-        <h2>${newName.value}</h2>
+        <h2>${newName}</h2>
         <p><b> Order:</b></p>
-        <p><b> ${dishName} ${size} ${amount}</b></p>
+        <p><b> ${amount} ${size} ${dishName}</b></p>
         `;
     
      
