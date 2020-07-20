@@ -80,30 +80,44 @@ window.addEventListener('submit', (event) => {
                     <button class="served">Delete order</button>
         </div>
       `
-      console.log(newOrderHtml);
         // Grabbing the container of the order lists
         const orderLists = document.querySelector('.order-list');
         orderLists.insertAdjacentHTML('beforeend', newOrderHtml);
         //Resetting the form
         const resetForm = document.querySelector('form');
         resetForm.reset();
+         // removing the modal
+        outerModal.style.display = "none";
      }  
 
      
     
 });
  
- 
-  window.addEventListener('click', (event) => {
-        //Showing all the detail information from the user
-        if (event.target.matches('button.details')) {
-            modalContent.innerHTML = `<h2>${myName.value}</h2>
-            <p><b> Order:</b></p>
-            <p><b> ${dishName.value} ${dishSize.value}</b></p>
-            `;
-            outerModal.style.display ="block";
-         }
- })
+const handleOrderButtonClick = (event) => {
+    if (event.target.matches('button.details')) {
+        const button = event.currentTarget;
+        const form = button.closest('.order');
+        const newName =  form.name.value;
+        const dishName = form.dataset.dish;
+        const size = form.dataset.size;
+        const amount = form.dataset.amount;
+        
+    
+        modalContent.innerHTML = `
+        <h2>${newName.value}</h2>
+        <p><b> Order:</b></p>
+        <p><b> ${dishName} ${size} ${amount}</b></p>
+        `;
+    
+     
+        // Show the modal
+         
+        outerModal.style.display ="block";   
+    };  
+}
+
+  window.addEventListener('click', handleOrderButtonClick);
 
 // Deleting the order
 const handleDeleteOrder = (e) => {
