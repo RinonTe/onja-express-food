@@ -48,20 +48,10 @@ const handleClick = e => {
         outerModal.style.display = 'none';
     }
 };
-
-const handleEscape = e => {
-    if (e.key === 'Escape') {
-        outerModal.style.display = 'none';
-    }
-};
-
 // using the button to oppen the modal
-
 showOrderButton.addEventListener('click', openFormOrder);
-window.addEventListener('keydown', handleEscape);
 outerModal.addEventListener('click', handleClick);
 
- 
 // Creating the new html for the order
 window.addEventListener('submit', (event) => {
     // Accessing the input elements in form and getting its value
@@ -69,7 +59,6 @@ window.addEventListener('submit', (event) => {
     const selectedDish = document.getElementById('select-form');
     const pieceNumbers = document.getElementById('quantity');
     const amount = document.querySelector('[name="size"]');
-    //const selectedDish = card.dataset.dish;
     event.preventDefault();
     if (event.target.matches('form')) {
         const newOrderHtml = `
@@ -90,11 +79,9 @@ window.addEventListener('submit', (event) => {
          // removing the modal
         outerModal.style.display = "none";
      }  
-
-     
-    
 });
  
+
 const handleOrderButtonClick = (event) => {
     if (event.target.matches('button.details')) {
         const newName = document.querySelector('.title').textContent;
@@ -103,17 +90,13 @@ const handleOrderButtonClick = (event) => {
         const dishName = form.dataset.dish;
         const size = form.dataset.size;
         const amount = form.dataset.amount;
-        
     
         modalContent.innerHTML = `
         <h2>${newName}</h2>
         <p><b> Order:</b></p>
         <p><b> ${amount} ${size} ${dishName}</b></p>
         `;
-    
-     
         // Show the modal
-         
         outerModal.style.display ="block";   
     };  
 }
