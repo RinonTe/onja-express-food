@@ -1,24 +1,45 @@
 console.log('good luck!');
 // Grabing all the useful buttons and the inner/outer modal
-const orderLists = document.querySelector('.order-list')
+
 const showOrderButton = document.querySelector('.add-order');
 const submitOrder = document.querySelector('.submitOrder');
 const deleteButton = document.querySelector('.served');
 const outerModal = document.querySelector('.outer-modal');
 const modalContent = document.querySelector('.modal-content');
- 
-// Reseting the form 
-const resetForm = document.querySelector('form');
-// Accessing the input elements in form and getting its value
-const name = document.getElementById('name');
-const selectedDish = document.getElementById('select-form');
- 
- 
+
 //Open the modal
 const openFormOrder = (e) => {
-    // Show the modal
-    outerModal.style.display="block";
-
+    modalContent.innerHTML = `
+    <form>
+        <p>Your name :</p>
+        <input class="input-form" type="text" id="name" name="name" placeholder="Enter your name here"
+            required />
+        <p>Please select your dish :</p>
+        <select name="dish" class="select-form" id="select-form" required>
+            <option value="romazava">Romazava</option>
+            <option value="koba">Koba</option>
+            <option value="ravitoto">Ravitoto</option>
+            <option value="mokary">Mokary</option>
+            <option value="achard">Achard</option>
+            <option value="masikita">Masikita</option>
+            <option value="sambos">Sambos</option>
+            <option value="mofo-baolina">Mofo baolina</option>
+            <option value="ranonapango">Ranonapango</option>
+        </select>
+        <p>Please select the size of your plate :</p>
+        <input type="radio" id="small" name="size" value="small"/>
+        <label for="small">Small</label><br />
+        <input type="radio" id="medium" name="size" value="medium" />
+        <label for="medium">Medium</label><br />
+        <input type="radio" id="large" name="size" value="large" />
+        <label for="large">Large</label><br />
+        <p>How many pieces do you want to order?</p>
+        <input class="input-form" type="number" id="quantity" name="amount" placeholder="Enter a number here"
+            required />
+        <button class="submitOrder" type="submit">Add this order</button>
+    </form>`;
+     // Show the modal
+    outerModal.style.display ="block";
 };
 
 const handleClick = e => {
@@ -42,25 +63,48 @@ outerModal.addEventListener('click', handleClick);
 
  
 // Creating the new html for the order
-const createOrder = () => {
-    return `
-    <div class="order" data-dish="romazava" data-size="large" data-amount="2">
-				<span class="title">
-					${name.value} 
-                </span>
-				<button class="details">Details</button>
-				<button class="served">Delete order</button>
-	</div>
-  `
-}
+window.addEventListener('submit', (event) => {
+    // Accessing the input elements in form and getting its value
+     const name = document.getElementById('name');
+    const selectedDish = document.getElementById('select-form');
+    const pieceNumbers = document.getElementById('quantity');
+    //const selectedDish = card.dataset.dish;
+    event.preventDefault();
+    if (event.target.matches('form')) {
+        const newOrderHtml = `
+        <div class="order" data-dish="${selectedDish.value}" data-size="large" data-amount="${pieceNumbers.value}">
+                    <span class="title">
+                        ${name.value}
+                    </span>
+                    <button class="details">Details</button>
+                    <button class="served">Delete order</button>
+        </div>
+      `
+      console.log(newOrderHtml);
+        // Grabbing the container of the order lists
+        const orderLists = document.querySelector('.order-list');
+        orderLists.insertAdjacentHTML('beforeend', newOrderHtml);
+        //Resetting the form
+        const resetForm = document.querySelector('form');
+        resetForm.reset();
+     }  
 
-submitOrder.addEventListener('click', ($event) => {
-    const newOrder = createOrder();
-    orderLists.insertAdjacentHTML('beforeend', newOrder);
-    $event.preventDefault();
-    resetForm.reset();
+     
+    
 });
  
+ 
+  window.addEventListener('click', (event) => {
+        //Showing all the detail information from the user
+        if (event.target.matches('button.details')) {
+            modalContent.innerHTML = `<h2>${myName.value}</h2>
+            <p><b> Order:</b></p>
+            <p><b> ${dishName.value} ${dishSize.value}</b></p>
+            `;
+            outerModal.style.display ="block";
+         }
+ })
+
 // Deleting the order
 const handleDeleteOrder = (e) => {
   if (e.target.classList.contains('served')) {
@@ -70,17 +114,4 @@ const handleDeleteOrder = (e) => {
 };
  
 document.addEventListener('click', handleDeleteOrder);
- 
-//Open detail 
- window.addEventListener('click', (e) => {
-    const pieceNumbers = document.getElementById('quantity');
-    if (e.target.classList.contains('details')) {
-        modalContent.innerHTML=`<h2> ${name.value}</h2>
-        <p><b>Order:</b></p>
-        <p><b> ${pieceNumbers.value} ${selectedDish.value}</b></p>`;
-    // Show the modal
-    outerModal.style.display="block";
-   }
-
-});
  
