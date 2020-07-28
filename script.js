@@ -1,6 +1,4 @@
-console.log('good luck!');
 // Grabing all the useful buttons and the inner/outer modal
-
 const showOrderButton = document.querySelector('.add-order');
 const submitOrder = document.querySelector('.submitOrder');
 const deleteButton = document.querySelector('.served');
@@ -48,6 +46,7 @@ const handleClick = e => {
         outerModal.style.display = 'none';
     }
 };
+
 // using the button to oppen the modal
 showOrderButton.addEventListener('click', openFormOrder);
 outerModal.addEventListener('click', handleClick);
@@ -55,7 +54,7 @@ outerModal.addEventListener('click', handleClick);
 // Creating the new html for the order
 window.addEventListener('submit', (event) => {
     // Accessing the input elements in form and getting its value
-     const name = document.getElementById('name');
+    const name = document.getElementById('name');
     const selectedDish = document.getElementById('select-form');
     const pieceNumbers = document.getElementById('quantity');
     const amount = document.querySelector('[name="size"]');
@@ -84,13 +83,13 @@ window.addEventListener('submit', (event) => {
 
 const handleOrderButtonClick = (event) => {
     if (event.target.matches('button.details')) {
-        const newName = document.querySelector('.title').textContent;
         const button = event.target;
         const form = button.closest('.order');
+        const newName = form.querySelector('.title').textContent;
         const dishName = form.dataset.dish;
         const size = form.dataset.size;
         const amount = form.dataset.amount;
-    
+
         modalContent.innerHTML = `
         <h2>${newName}</h2>
         <p><b> Order:</b></p>
@@ -101,7 +100,7 @@ const handleOrderButtonClick = (event) => {
     };  
 }
 
-  window.addEventListener('click', handleOrderButtonClick);
+window.addEventListener('click', handleOrderButtonClick);
 
 // Deleting the order
 const handleDeleteOrder = (e) => {

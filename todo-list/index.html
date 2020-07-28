@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-list</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+        .list {
+            display: grid;
+            grid-template-columns:  200px 100px
+        }
+        .add-button {
+           position: relative;
+           top: 1rem;
+           max-width: 100px;
+           height: 20px;
+        }
+        .cross {
+            text-decoration: line-through;
+        }
+        .example {  
+            max-width: 500px;
+            background-color: rgba(141, 240, 207, 0.637);
+            border: 1px solid rgba(0, 0, 0, 0.39);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            margin-inline-start: 2rem;
+        }
+         
+        .delete-checkbox {
+            position: relative;
+            bottom: -2.75rem;
+            
+        }
+
+        .delete-list {
+            position: relative;
+            left: 400px;
+            bottom: 2.75rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            Todo list
+        </h1>
+    </header>
+    <div class="container">
+
+        <div class="list">
+            <form action="./todo-list">
+                <label for="list">Add a to do list</label><br>
+                <input type="text" id="list" required>
+            </form>
+            <button type="button" class="add-button" id="add-button">Add</button>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
