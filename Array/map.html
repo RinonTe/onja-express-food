@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+</head>
+<body>
+    <script>
+
+    // =================MAP============
+      let numberOfArray = [2, 5, 100];
+        function doubleNumbers(arr){
+            // your code here
+	        return arr.map(arr => arr * 2);
+        }
+        console.log(doubleNumbers(numberOfArray));
+        // String arrays up
+        // function stringItUp(arr){
+        //     return arr.map(number => `${number}`);
+        // }
+        function stringItUp(arr){
+            return arr.map(number => number.toString());
+        }
+        console.log(stringItUp(numberOfArray));
+// Capitalize names
+        function capitalizeNames(arr){
+        return arr.map(arr => {
+            const lowerCase = arr.toLowerCase(); 
+            const firstLetter = lowerCase[0].toUpperCase();
+            return `${firstLetter}${lowerCase.slice(1)}`;
+        });
+    
+    }
+     
+       console.log(capitalizeNames(["john", "JACOB", "jinGleHeimer", "schmidt"]));
+        
+       function namesOnly(arr){
+         return arr.map(people => people.name)
+     }
+
+console.log(namesOnly([
+    {
+        name: "Angelina Jolie",
+        age: 80
+    },
+    {
+        name: "Eric Jones",
+        age: 2
+    },
+    {
+        name: "Paris Hilton",
+        age: 5
+    },
+    {
+        name: "Kayne West",
+        age: 16
+    },
+    {
+        name: "Bob Ziroll",
+        age: 100
+    }
+])); 
+// ["Angelina Jolie", "Eric Jones", "Paris Hilton", "Kayne West", "Bob Ziroll"]
+ 
+function makeStrings(arr){
+  // your code here
+  return arr.map(people => {
+      if (people.age > 18) {
+          return `${people.name} can go to the Matrix`;
+      } else {
+          return `${people.name} is under age`;
+      }
+  })
+}
+
+console.log(makeStrings([
+    {
+        name: "Angelina Jolie",
+        age: 80
+    },
+    {
+        name: "Eric Jones",
+        age: 2
+    },
+    {
+        name: "Paris Hilton",
+        age: 5
+    },
+    {
+        name: "Kayne West",
+        age: 16
+    },
+    {
+        name: "Bob Ziroll",
+        age: 100
+    }
+])); 
+    // ["Angelina Jolie can go to The Matrix", 
+    // "Eric Jones is under age!!", 
+    // "Paris Hilton is under age!!", 
+    // "Kayne West is under age!!", 
+    // "Bob Ziroll can go to The Matrix"]
+ //================FILTER==========================================
+        function fiveAndGreaterOnly(arr) {
+        // your code here
+        return arr.filter(number => number > 5);
+        }
+        // test
+        console.log(fiveAndGreaterOnly([3, 6, 8, 2])); /// [6, 8]
+        let arrayNumber = [3, 6, 8, 2];
+        function evensOnly(arr) {
+        // your code here
+            return arr.filter(number => number % 2 == 0);
+        }
+        // test
+        console.log(evensOnly(arrayNumber)); /// [6, 8, 2]
+        
+        function fiveCharactersOrFewerOnly(arr) {
+            // your code here
+            return arr.filter(character => character.length <= 5); 
+             
+        }
+        // test
+        console.log(fiveCharactersOrFewerOnly(["dog", "wolf", "by", "family", "eaten", "camping"])); // ["by", "dog", "wolf", "eaten"]
+
+        function peopleWhoBelongToTheIlluminati(arr){
+            // your code here
+           return arr.filter(person => person.member == true);
+        }
+        // test
+        console.log(peopleWhoBelongToTheIlluminati([
+            { name: "Angelina Jolie", member: true },
+            { name: "Eric Jones", member: false },
+            { name: "Paris Hilton", member: true },
+            { name: "Kayne West", member: false },
+            { name: "Bob Ziroll", member: true }
+        ]));
+        // =>
+        //[ { name: 'Angelina Jolie', member: true },
+        //  { name: 'Paris Hilton', member: true },
+        //  { name: 'Bob Ziroll', member: true } ]
+
+        function ofAge(arr){
+            // your code here
+           return arr.filter(person => person.age > 18);
+        }
+        // test
+        console.log(ofAge([
+            { name: "Angelina Jolie", age: 80 },
+            { name: "Eric Jones", age: 2 },
+            { name: "Paris Hilton", age: 5 },
+            { name: "Kayne West", age: 16 },
+            { name: "Bob Ziroll", age: 100 }
+        ])); 
+        // => 
+        //[ { name: 'Angelina Jolie', age: 80 },
+        //  { name: 'Bob Ziroll', age: 100 } ]
+
+    //===================REDUCE===========================
+    function total(arr) {
+        return arr.reduce((acc, value) => acc + value, 0);
+    }
+    console.log(total([1,2,3])); 
+ 
+ 
+ 
+    function stringConcat(arr) {
+      // your code here 
+      return arr.reduce((acc, value) => {
+          return `${acc}${value}`});
+
+    } 
+    console.log(stringConcat([1,2,3])); // "123"
+
+    var accounts = [
+  { name: 'James Brown', msgCount: 123 },
+  { name: 'Stevie Wonder', msgCount: 22 },
+  { name: 'Sly Stone', msgCount: 16 },
+  { name: 'Otis Redding', msgCount: 300 }  // Otis has the most messages
+];
+
+// get sum of msgCount prop across all objects in array
+var msgTotal = accounts.reduce(function(prev, cur) {
+  return prev + cur.msgCount;
+}, 0);
+
+ 
+    function totalVotes(arr) {
+        return arr.reduce((sum, vote) => {
+         return sum + vote.voted
+    }, 0);
+}
+
+var voters = [
+    {name:'Bob' , age: 30, voted: true},
+    {name:'Jake' , age: 32, voted: true},
+    {name:'Kate' , age: 25, voted: false},
+    {name:'Sam' , age: 20, voted: false},
+    {name:'Phil' , age: 21, voted: true},
+    {name:'Ed' , age:55, voted:true},
+    {name:'Tami' , age: 54, voted:true},
+    {name: 'Mary', age: 31, voted: false},
+    {name: 'Becky', age: 43, voted: false},
+    {name: 'Joey', age: 41, voted: true},
+    {name: 'Jeff', age: 30, voted: true},
+    {name: 'Zack', age: 19, voted: false}
+];
+// ====== SECOND METHOD===============
+// var votesTotal = voters.reduce(function(acc, sum) {
+//   return acc + sum.voted;
+// }, 0);
+// console.log(votesTotal); // 7
+
+console.log(totalVotes(voters));
+ 
+function shoppingSpree(arr) {
+   // your code here    
+   return arr.reduce((acc, total) => { 
+         return acc + total.price;
+    }, 0);
+}
+
+var wishlist = [
+    { title: "Tesla Model S", price: 90000 },
+    { title: "4 carat diamond ring", price: 45000 },
+    { title: "Fancy hacky Sack", price: 5 },
+    { title: "Gold fidgit spinner", price: 2000 },
+    { title: "A second Tesla Model S", price: 90000 }
+];
+
+console.log(shoppingSpree(wishlist)); // 227005
+ 
+ 
+
+
+
+var arrays = [
+    ["1", "2", "3"],
+    [true],
+    [4, 5, 6]
+];
+
+console.log(flatten(arrays)); // ["1", "2", "3", true, 4, 5, 6];
+
+function flatten(arr) {
+   // your code here  
+    
+}
+  
+    </script>
+</body>
+</html>
