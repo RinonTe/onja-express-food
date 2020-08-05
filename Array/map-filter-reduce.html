@@ -168,23 +168,14 @@ console.log(makeStrings([
     function stringConcat(arr) {
       // your code here 
       return arr.reduce((acc, value) => {
-          return `${acc}${value}`});
+          return String(value)});
+         // return `${acc}${value}`});
 
     } 
     console.log(stringConcat([1,2,3])); // "123"
 
-    var accounts = [
-  { name: 'James Brown', msgCount: 123 },
-  { name: 'Stevie Wonder', msgCount: 22 },
-  { name: 'Sly Stone', msgCount: 16 },
-  { name: 'Otis Redding', msgCount: 300 }  // Otis has the most messages
-];
 
 // get sum of msgCount prop across all objects in array
-var msgTotal = accounts.reduce(function(prev, cur) {
-  return prev + cur.msgCount;
-}, 0);
-
  
     function totalVotes(arr) {
         return arr.reduce((sum, vote) => {
@@ -231,21 +222,17 @@ var wishlist = [
 
 console.log(shoppingSpree(wishlist)); // 227005
  
- 
-
-
-
 var arrays = [
     ["1", "2", "3"],
     [true],
     [4, 5, 6]
 ];
-
+     
 console.log(flatten(arrays)); // ["1", "2", "3", true, 4, 5, 6];
 
 function flatten(arr) {
    // your code here  
-    
+ 
 }
   
     </script>
