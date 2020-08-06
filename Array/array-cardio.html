@@ -35,20 +35,61 @@
         return annee.year > 1500 && annee.year < 1600;
         });
         console.log(nameOfInventors);
+   
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
-        const inventorsArray = inventors.map()
+      function namesOnly(arr){
+          return arr.map(people => people.first + ' ' + people.last)
+      }
+
+      console.log(namesOnly(inventors));
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+        const birthdateFunction  = (date) => {
+					return date.map(people => people.year);
+				}
 
+				let sortedArray= birthdateFunction(inventors);
+        const sortFunction  = (a,b) => {
+					return a - b;
+				}
+				console.log(sortedArray.sort(sortFunction));
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+        
+    function lifeExpectancy(arr) {
+      // your code here    
+      return arr.reduce((acc, years) => { 
+            return acc + (years.passed - years.year);
+        }, 0);
+    }
 
+    console.log(lifeExpectancy(inventors));
     // 5. Sort the inventors by years lived
+    var sortable = [];
+    for (var duration in inventors) {
+        sortable.push([duration, inventors[duration]]);
+    }
 
+    sortable.sort(function(a, b) {
+        return a[1] - b[1];
+    });
+            
+    console.log(sortable);
+
+    const TheLifeExpectancy = inventors.sort((a, b) => {
+      const lifeA = a.passed - a.year;
+      const lifeB = b.passed - b.year;
+      return lifeB - lifeA;
+    })
     // 6. sort Exercise
     // Sort the people alphabetically by last name
-
+     const alpha = people.sort((lastOne, nextOne) => {
+         const [aLast, aFirst] = lastOne.split(',');
+         const [bLast, bFirst] = lastOne.split(',');
+         return aLast > bFirst ? 1: -1;
+     });
+     console.log(alpha);
     // 7. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
