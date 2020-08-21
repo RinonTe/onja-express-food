@@ -93,7 +93,8 @@
     // 7. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
+    sample = { 'a': 1 , 'b': 2 , 'c':3 };
+    const sumValues = (obj) => Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
     // BONUS : create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 

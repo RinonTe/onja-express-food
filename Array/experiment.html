@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment</title>
+</head>
+<body>
+    <section id="memorygame">
+        <div class="card">
+          <p class="front">Lorem ipsum dolor sit amet consectetur </p>
+          <p class="back">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, repellendus!</p>
+        </div>
+      </section>
+      <script>
+          const cards = document.querySelectorAll('.card');
+        //   const arr = Array.from(cards);
+        //   const arr = [...cards];
+        //   var arr = Array.prototype.slice.call(cards);
+          var arr = [];
+        for (var i = 0; i < cards.length; i++) {
+        arr.push(cards[i]);
+        }
+          console.log(arr);
+        // Randomize each card
+  
+      </script>
+</body>
+</html>
